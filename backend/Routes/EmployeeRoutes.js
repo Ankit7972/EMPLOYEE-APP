@@ -1,23 +1,22 @@
-const { cloudinaryFileUploader } = require("../Middelwares/FileUploader");
 const {
   createEmployee,
-  getAllEmployee,
+  getAllEmployees,
   getEmployeeById,
   deleteEmployeeById,
+  updateEmployeeById,
 } = require("../Controllers/EmployeeController");
+const { cloudinaryFileUploader } = require("../Middelwares/FileUplaoder");
 
-const routes = require("express").Router();
+const router = require("express").Router();
 
-//home page all employee infomation
-routes.get("/", getAllEmployee);
+router.get("/", getAllEmployees);
+router.get("/:id", getEmployeeById);
+router.delete("/:id", deleteEmployeeById);
+router.put(
+  "/:id",
+  cloudinaryFileUploader.single("profileImage"),
+  updateEmployeeById
+);
+router.post("/", cloudinaryFileUploader.single("profileImage"), createEmployee);
 
-//get employee by ID
-routes.get("/:id", getEmployeeById);
-
-//Delete route of Employee
-routes.delete("/:id", deleteEmployeeById);
-
-//To create the Employee
-routes.post("/", cloudinaryFileUploader.single("profileImage"), createEmployee);
-
-module.exports = routes;
+module.exports = router;
