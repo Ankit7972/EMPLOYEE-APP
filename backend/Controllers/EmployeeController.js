@@ -13,6 +13,7 @@ const createEmployee = async (req, res) => {
       success: true,
     });
   } catch (err) {
+    console.log("Error ", err);
     res.status(500).json({
       message: "Internal Server Error",
       success: false,
@@ -68,6 +69,7 @@ const getAllEmployees = async (req, res) => {
       },
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: "Internal Server Error",
       success: false,
@@ -86,6 +88,7 @@ const getEmployeeById = async (req, res) => {
       data: emp,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: "Internal Server Error",
       success: false,
@@ -103,6 +106,7 @@ const deleteEmployeeById = async (req, res) => {
       success: true,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: "Internal Server Error",
       success: false,
@@ -123,6 +127,7 @@ const updateEmployeeById = async (req, res) => {
       salary,
       updatedAt: new Date(),
     };
+    console.log("<-- update ---> ", req.file);
     if (req.file) {
       updateData.profileImage = req.file.path;
     }
