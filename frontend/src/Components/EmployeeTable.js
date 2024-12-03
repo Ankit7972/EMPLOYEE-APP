@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function EmployeeTable() {
   const headers = ["Name", "Email", "Phone", "Department", "Actions"];
 
-  const TableRow = ({ employee }) => {
+  const TableRow = (employee) => {
     return (
       <tr>
         <td>
