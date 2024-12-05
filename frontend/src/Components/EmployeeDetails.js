@@ -13,15 +13,15 @@ const EmployeeDetails = () => {
       const data = await GetEmployeeDetailsById(id);
       setEmployee(data);
     } catch (err) {
-      alert("Error", err);
+      alert("Error: ", +err);
     }
   };
   useEffect(() => {
     fetchEmployeeDetails();
   }, [id]);
 
-  if (!employee) {
-    return <div>Employee not found</div>;
+  if (!employee || Object.keys(employee).length === 0) {
+    return <div>Employee not found</div>; // Updated check for empty employee object
   }
 
   return (
