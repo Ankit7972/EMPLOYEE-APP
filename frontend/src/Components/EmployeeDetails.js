@@ -18,7 +18,7 @@ const EmployeeDetails = () => {
   };
   useEffect(() => {
     fetchEmployeeDetails();
-  }, [id, fetchEmployeeDetails]);
+  }, [id]);
 
   if (!employee || Object.keys(employee).length === 0) {
     return <div>Employee not found</div>; // Updated check for empty employee object
